@@ -17,14 +17,22 @@
 package cn.umidata.eos.service.impl;
 
 import cn.umidata.core.constants.Constants;
+import cn.umidata.core.utils.HttpClientUtil;
 import cn.umidata.core.utils.HttpUtil;
 import cn.umidata.eos.service.ChainService;
+import org.apache.http.Header;
+import org.apache.http.HttpException;
+import org.apache.http.HttpResponse;
+import org.apache.http.NameValuePair;
+import org.apache.http.message.BasicNameValuePair;
 import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 /**
@@ -44,9 +52,9 @@ public class ChainServiceImpl implements ChainService {
 
     @Override
     public String getBlock(String blockNumber) {
-        Map<String, String> queryMap = new HashMap<>(1);
-        queryMap.put("block_num_or_id",blockNumber);
-        String response = HttpUtil.doPost(env.getProperty("eos.node.ip") + Constants.VERSION + Constants.MODEL_CHAIN + Constants.CHAIN_GET_BLOCK, queryMap, "utf-8");
+        HashMap<String, String> objectObjectHashMap = new HashMap<>();
+        objectObjectHashMap.put("block_num_or_id",blockNumber);
+        String response = HttpUtil.doPost(env.getProperty("eos.node.ip") + Constants.VERSION + Constants.MODEL_CHAIN + Constants.CHAIN_GET_BLOCK, objectObjectHashMap, "utf-8");
         return response;
     }
 }

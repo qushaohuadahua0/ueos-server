@@ -1,5 +1,6 @@
 package cn.umidata.eos.controller;
 
+import cn.umidata.core.utils.HttpClientUtil;
 import cn.umidata.eos.service.ChainService;
 import org.springframework.web.bind.annotation.*;
 
