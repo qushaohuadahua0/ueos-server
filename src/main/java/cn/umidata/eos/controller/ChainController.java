@@ -17,12 +17,12 @@ public class ChainController {
     @Resource
     private ChainService appService;
 
-    @GetMapping(value = "getInfo")
+    @PostMapping(value = "getInfo")
     public String getInfo(@RequestParam("token") String token) throws IOException {
         return appService.getInfo();
     }
 
-    @GetMapping(value = "getBlock")
+    @PostMapping(value = "getBlock")
     public String getInfo(@RequestParam("token") String token,@RequestParam("blockNumber") String blockNumber) throws IOException {
         return appService.getBlock(blockNumber);
     }
